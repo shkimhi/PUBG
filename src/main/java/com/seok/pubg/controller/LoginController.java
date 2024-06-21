@@ -16,4 +16,13 @@ public class LoginController {
     public String index(){
         return "index";
     }
+
+    @RequestMapping("/match")
+    public String match(){
+        return "MatchHistoryDetailPage";
+    }
+    @RequestMapping("/match2")
+    public String match2(){
+        return "MatchHistoryDetailPage2";
+    }
 }

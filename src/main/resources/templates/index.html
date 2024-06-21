@@ -3,65 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>배그전적검색</title>
-  <!-- Tailwind CSS CDN -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-  <!-- Shadcn styles -->
-  <style>
-    .bg-primary { background-color: #1f2937; } /* Example primary color */
-    .text-primary-foreground { color: #f3f4f6; } /* Example primary foreground color */
-    .border-input { border-color: #d1d5db; } /* Example border color */
-    .bg-background { background-color: #ffffff; } /* Example background color */
-    .ring-ring { border-color: #3b82f6; } /* Example ring color */
-    .ring-offset-background { border-color: #e5e7eb; } /* Example ring offset color */
-    .text-muted-foreground { color: #6b7280; } /* Example muted foreground color */
-  </style>
+  <th:block th:include="/common/Header.html"></th:block>
 </head>
 <body class="flex flex-col min-h-screen">
-
-<header class="bg-primary text-primary-foreground py-4 px-6 shadow">
-  <div class="max-w-6xl mx-auto flex items-center justify-between">
-    <nav class="flex items-center gap-6">
-    <a class="text-xl font-bold" href="#">
-      배그전적검색
-    </a>
-      <a class="text-lg font-medium" data-id="6" href="#" rel="ugc">
-        전적검색
-      </a>
-      <a class="text-lg font-medium" data-id="7" href="#" rel="ugc">
-        팀원찾기
-      </a>
-    </nav>
-    <div class="flex justify-center w-full max-w-md">
-      <input
-              class="flex h-10 w-full border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pr-12 rounded-full"
-              placeholder="배틀그라운드 닉네임을 입력하세요"
-              type="text"
-              th:value="${searchQuery}"
-      />
-      <button
-              class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 ml-2 bg-primary text-primary-foreground hover:bg-primary/80 transition-colors"
-              type="button"
-      >
-        <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-5 h-5"
-        >
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.3-4.3"></path>
-        </svg>
-      </button>
-    </div>
-  </div>
-</header>
-
 <main class="flex-1 bg-muted/40 py-8">
   <div class="max-w-6xl mx-auto text-center py-16">
     <h1 class="text-3xl font-bold mb-4">배그전적검색</h1>
