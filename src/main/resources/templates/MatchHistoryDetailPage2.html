@@ -1,79 +1,80 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-  <title>매치 요약 정보</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배틀그라운드 전적검색</title>
+  <!-- 부트스트랩 CSS 링크 -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* 추가적인 커스텀 스타일 필요 시 여기에 작성 */
+    /* 추가적인 스타일링이 필요한 경우 여기에 작성 */
   </style>
 </head>
 <body>
-<section class="Match Match--top">
-  <h4 class="sr-only">매치 요약 정보</h4>
-  <header class="Match__header">
-    <strong class="Match__mode">듀오</strong>
-    <p class="Match__rank">
-      <span class="Match__me">#4</span>
-      <span class="Match__total">/47</span>
-    </p>
-    <p class="Match__time">
-      <span class="has-tooltip" title="null">21시간 전</span>
-    </p>
-  </header>
-  <dl class="Match__infos">
-    <div class="Info Match__info--map">
-      <dt class="Info__label">지도</dt>
-      <dd class="Info__value">사녹</dd>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class="text-center mb-4">배틀그라운드 전적검색</h2>
+      <!-- 콜랩스 시작 -->
+      <div id="playerStats" class="accordion">
+        <!-- 첫 번째 아이템 -->
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                플레이어 이름 (예: PlayerName)
+              </button>
+            </h5>
+            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              상세
+            </button>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#playerStats">
+            <div class="card-body">
+              <ul class="list-group">
+                <li class="list-group-item">최근 플레이 시간: 21시간 전</li>
+                <li class="list-group-item">최고 순위: #4 / 47</li>
+                <li class="list-group-item">최근 사용한 지도: 사녹</li>
+                <li class="list-group-item">주 사용 무기: QBZ95</li>
+                <li class="list-group-item">킬 수: 7</li>
+                <li class="list-group-item">딜량: 692</li>
+                <li class="list-group-item">DBNO 수: 3</li>
+                <li class="list-group-item">이동 거리: 0.78km</li>
+                <li class="list-group-item">생존 시간: 21분 18초</li>
+                <li class="list-group-item">가장 멀리 저격한 거리: 385m</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- 추가적인 플레이어 아이템들 -->
+        <!-- 예를 들어 두 번째 플레이어 -->
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                다른 플레이어 이름 (예: AnotherPlayer)
+              </button>
+            </h5>
+            <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              상세
+            </button>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#playerStats">
+            <div class="card-body">
+              <!-- 다른 플레이어의 정보 -->
+              <p>다른 플레이어의 추가 정보들을 여기에 작성</p>
+            </div>
+          </div>
+        </div>
+        <!-- 콜랩스 끝 -->
+      </div>
     </div>
-    <div class="Info Match__info--weapon d-none d-xl-flex">
-      <dt class="Info__label">주 무기</dt>
-      <dd class="Info__value">QBZ95</dd>
-    </div>
-    <div class="Info Match__info--kill">
-      <dt class="Info__label">킬</dt>
-      <dd class="Info__value">7</dd>
-    </div>
-    <div class="Info Match__info--damage">
-      <dt class="Info__label">딜량</dt>
-      <dd class="Info__value">692</dd>
-    </div>
-    <div class="Info Match__info--dbno d-none d-md-flex">
-      <dt class="Info__label">DBNO</dt>
-      <dd class="Info__value">3</dd>
-    </div>
-    <div class="Info Match__info--distance d-none d-lg-flex">
-      <dt class="Info__label">이동 거리</dt>
-      <dd class="Info__value">0.78km</dd>
-    </div>
-    <div class="Info Match__info--survived d-none d-lg-flex">
-      <dt class="Info__label">생존 시간</dt>
-      <dd class="Info__value">21분 18초</dd>
-    </div>
-    <div class="Info Match__info--longest d-none d-md-flex">
-      <dt class="Info__label">저격</dt>
-      <dd class="Info__value">385m</dd>
-    </div>
-  </dl>
-  <ul class="rosters Match__info--rosters d-none d-sm-flex">
-    <li class="roster">
-      <a href="/pubg/profile/steam/Kimputer/pc-2018-30" class="roster__name">Kimputer</a>
-    </li>
-    <li class="roster">
-      <a href="/pubg/profile/steam/Tongsukingg/pc-2018-30" class="roster__name roster__name--me">Tongsukingg</a>
-    </li>
-  </ul>
-  <div class="Match__detail">
-    <button type="button" class="Match__button">
-      상세
-      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="Match__ico">
-        <path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path>
-      </svg>
-    </button>
   </div>
-</section>
+</div>
 
-<script>
-  // 추가적인 JavaScript가 필요한 경우 여기에 작성
-</script>
+<!-- 부트스트랩 및 제이쿼리 JS 링크 -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
