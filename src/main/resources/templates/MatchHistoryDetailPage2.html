@@ -1,272 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>배그전적검색</title>
-  <!-- Tailwind CSS CDN -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-  <!-- Custom styles -->
+  <title>매치 요약 정보</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .bg-primary { background-color: #1f2937; }
-    .text-primary-foreground { color: #f3f4f6; }
-    .border-input { border-color: #d1d5db; }
-    .bg-background { background-color: #ffffff; }
-    .ring-ring { border-color: #3b82f6; }
-    .ring-offset-background { border-color: #e5e7eb; }
-    .text-muted-foreground { color: #6b7280; }
-    .bg-muted { background-color: #374151; }
-    .text-foreground { color: #e5e7eb; }
-    .hover\:bg-primary\/80:hover { background-color: rgba(31, 41, 55, 0.8); }
+    /* 추가적인 커스텀 스타일 필요 시 여기에 작성 */
   </style>
 </head>
-<body class="bg-white-900 text-white min-h-screen p-4">
-<!--
-// v0 by Vercel.
-// https://v0.dev/t/yHV2rMPRjIZ
--->
-
-<div class="bg-gray-900 text-white min-h-screen p-4">
-  <div class="bg-gray-800 p-4 rounded-md">
-    <div class="flex items-center">
-      <span class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-        <img class="aspect-square h-full w-full" src="/placeholder-user.jpg" />
-      </span>
-      <div class="ml-4">
-        <h1 class="text-2xl font-bold">Tongsukingg</h1>
-        <div class="flex items-center space-x-2 mt-2">
-          <div
-                  class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80"
-                  data-v0-t="badge"
-          >
-            최신 전적
-          </div>
-          <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3">
-            즐겨찾기
-          </button>
-        </div>
-        <p class="text-sm mt-2">최근 업데이트: 황금</p>
-      </div>
+<body>
+<section class="Match Match--top">
+  <h4 class="sr-only">매치 요약 정보</h4>
+  <header class="Match__header">
+    <strong class="Match__mode">듀오</strong>
+    <p class="Match__rank">
+      <span class="Match__me">#4</span>
+      <span class="Match__total">/47</span>
+    </p>
+    <p class="Match__time">
+      <span class="has-tooltip" title="null">21시간 전</span>
+    </p>
+  </header>
+  <dl class="Match__infos">
+    <div class="Info Match__info--map">
+      <dt class="Info__label">지도</dt>
+      <dd class="Info__value">사녹</dd>
     </div>
-    <div class="mt-4">
-      <div dir="ltr" data-orientation="horizontal">
-        <div
-                role="tablist"
-                aria-orientation="horizontal"
-                class="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground"
-                tabindex="0"
-                data-orientation="horizontal"
-                style="outline: none;"
-        >
-          <button
-                  type="button"
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="radix-:r0:-content-overview"
-                  data-state="active"
-                  id="radix-:r0:-trigger-overview"
-                  class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
-                  tabindex="-1"
-                  data-orientation="horizontal"
-                  data-radix-collection-item=""
-          >
-            개요
-          </button>
-          <button
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="radix-:r0:-content-detailed"
-                  data-state="inactive"
-                  id="radix-:r0:-trigger-detailed"
-                  class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
-                  tabindex="-1"
-                  data-orientation="horizontal"
-                  data-radix-collection-item=""
-          >
-            상세 전적
-          </button>
-          <button
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="radix-:r0:-content-match-record"
-                  data-state="inactive"
-                  id="radix-:r0:-trigger-match-record"
-                  class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
-                  tabindex="-1"
-                  data-orientation="horizontal"
-                  data-radix-collection-item=""
-          >
-            매치 기록
-          </button>
-        </div>
-      </div>
+    <div class="Info Match__info--weapon d-none d-xl-flex">
+      <dt class="Info__label">주 무기</dt>
+      <dd class="Info__value">QBZ95</dd>
     </div>
-    <div class="mt-4">
-      <div dir="ltr" data-orientation="horizontal">
-        <div
-                role="tablist"
-                aria-orientation="horizontal"
-                class="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground"
-                tabindex="0"
-                data-orientation="horizontal"
-                style="outline: none;"
-        >
-          <button
-                  type="button"
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="radix-:r4:-content-tpp"
-                  data-state="active"
-                  id="radix-:r4:-trigger-tpp"
-                  class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
-                  tabindex="-1"
-                  data-orientation="horizontal"
-                  data-radix-collection-item=""
-          >
-            TPP
-          </button>
-          <button
-                  type="button"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="radix-:r4:-content-fpp"
-                  data-state="inactive"
-                  id="radix-:r4:-trigger-fpp"
-                  class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
-                  tabindex="-1"
-                  data-orientation="horizontal"
-                  data-radix-collection-item=""
-          >
-            FPP
-          </button>
-        </div>
-      </div>
+    <div class="Info Match__info--kill">
+      <dt class="Info__label">킬</dt>
+      <dd class="Info__value">7</dd>
     </div>
-    <div class="grid grid-cols-2 gap-4 mt-4">
-      <div class="bg-yellow-200 p-4 rounded-md">
-        <h2 class="text-lg font-bold">솔로</h2>
-        <p class="text-center mt-4">기록 없음</p>
-      </div>
-      <div class="bg-green-200 p-4 rounded-md">
-        <h2 class="text-lg font-bold">스쿼드</h2>
-        <div class="flex items-center mt-4">
-          <img
-                  src="/placeholder.svg"
-                  alt="Rank"
-                  width="50"
-                  height="50"
-                  style="aspect-ratio: 50 / 50; object-fit: cover;"
-          />
-          <div class="ml-4">
-            <p class="text-lg font-bold">Gold 4</p>
-            <p>2,135 RP</p>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 gap-4 mt-4">
-          <div>
-            <p>KDA</p>
-            <p class="text-red-500">0.70</p>
-          </div>
-          <div>
-            <p>승률</p>
-            <p>0%</p>
-          </div>
-          <div>
-            <p>평균 딜량</p>
-            <p class="text-blue-500">66</p>
-          </div>
-          <div>
-            <p>게임 수</p>
-            <p>20</p>
-          </div>
-          <div>
-            <p>Top10</p>
-            <p>70%</p>
-          </div>
-          <div>
-            <p>평균 등수</p>
-            <p>#8.1</p>
-          </div>
-        </div>
-      </div>
+    <div class="Info Match__info--damage">
+      <dt class="Info__label">딜량</dt>
+      <dd class="Info__value">692</dd>
     </div>
-    <div class="bg-gray-700 p-4 rounded-md mt-4">
-      <h2 class="text-lg font-bold">일반 게임 전적</h2>
-      <div class="grid grid-cols-3 gap-4 mt-4">
-        <div class="bg-white text-black p-4 rounded-md">
-          <h3 class="text-lg font-bold">솔로</h3>
-          <p class="text-center mt-4">기록 없음</p>
-        </div>
-        <div class="bg-white text-black p-4 rounded-md">
-          <h3 class="text-lg font-bold">듀오</h3>
-          <div class="grid grid-cols-2 gap-4 mt-4">
-            <div>
-              <p>K/D</p>
-              <p class="text-blue-500">2.14</p>
-            </div>
-            <div>
-              <p>승률</p>
-              <p>12.5%</p>
-            </div>
-            <div>
-              <p>평균 딜량</p>
-              <p class="text-blue-500">238</p>
-            </div>
-            <div>
-              <p>게임 수</p>
-              <p>8</p>
-            </div>
-            <div>
-              <p>헤드샷</p>
-              <p>26.7%</p>
-            </div>
-            <div>
-              <p>저격</p>
-              <p>119.5m</p>
-            </div>
-            <div>
-              <p>생존</p>
-              <p>14분 9초</p>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white text-black p-4 rounded-md">
-          <h3 class="text-lg font-bold">스쿼드</h3>
-          <div class="grid grid-cols-2 gap-4 mt-4">
-            <div>
-              <p>K/D</p>
-              <p class="text-blue-500">1.25</p>
-            </div>
-            <div>
-              <p>승률</p>
-              <p>2.1%</p>
-            </div>
-            <div>
-              <p>평균 딜량</p>
-              <p class="text-blue-500">185</p>
-            </div>
-            <div>
-              <p>게임 수</p>
-              <p>48</p>
-            </div>
-            <div>
-              <p>헤드샷</p>
-              <p>16.7%</p>
-            </div>
-            <div>
-              <p>저격</p>
-              <p>253.1m</p>
-            </div>
-            <div>
-              <p>생존</p>
-              <p>11분 22초</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="Info Match__info--dbno d-none d-md-flex">
+      <dt class="Info__label">DBNO</dt>
+      <dd class="Info__value">3</dd>
     </div>
+    <div class="Info Match__info--distance d-none d-lg-flex">
+      <dt class="Info__label">이동 거리</dt>
+      <dd class="Info__value">0.78km</dd>
+    </div>
+    <div class="Info Match__info--survived d-none d-lg-flex">
+      <dt class="Info__label">생존 시간</dt>
+      <dd class="Info__value">21분 18초</dd>
+    </div>
+    <div class="Info Match__info--longest d-none d-md-flex">
+      <dt class="Info__label">저격</dt>
+      <dd class="Info__value">385m</dd>
+    </div>
+  </dl>
+  <ul class="rosters Match__info--rosters d-none d-sm-flex">
+    <li class="roster">
+      <a href="/pubg/profile/steam/Kimputer/pc-2018-30" class="roster__name">Kimputer</a>
+    </li>
+    <li class="roster">
+      <a href="/pubg/profile/steam/Tongsukingg/pc-2018-30" class="roster__name roster__name--me">Tongsukingg</a>
+    </li>
+  </ul>
+  <div class="Match__detail">
+    <button type="button" class="Match__button">
+      상세
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="Match__ico">
+        <path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path>
+      </svg>
+    </button>
   </div>
-</div>
+</section>
+
+<script>
+  // 추가적인 JavaScript가 필요한 경우 여기에 작성
+</script>
 </body>
 </html>
