@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/pubg/")
@@ -24,10 +26,9 @@ public class PUBGApiController {
         this.pubgApiService = pubgApiService;
     }
 
-    @GetMapping("/matchid/{userId}")
-    public JsonNode GetMatchId(@PathVariable String userId) throws IOException {
-        JsonNode matchId = pubgApiService.getMatchId(userId);
-        return matchId;
+    @GetMapping("/matchid/{platform}/{player_name}")
+    public List<Set<String>> GetMatchId(@PathVariable String platform, @PathVariable String player_name) throws Exception {
+        return pubgApiService.getMatchId(platform,player_name);
     }
 
 }
