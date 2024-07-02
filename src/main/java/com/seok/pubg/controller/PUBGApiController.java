@@ -3,6 +3,7 @@ package com.seok.pubg.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.seok.pubg.service.PUBGApiService;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -27,7 +29,8 @@ public class PUBGApiController {
     }
 
     @GetMapping("/matchid/{platform}/{player_name}")
-    public List<Set<String>> GetMatchId(@PathVariable String platform, @PathVariable String player_name) throws Exception {
+    public Map<String,Object> GetMatchId(@PathVariable String platform, @PathVariable String player_name) throws Exception {
+        System.out.println(pubgApiService.getMatchId(platform,player_name));
         return pubgApiService.getMatchId(platform,player_name);
     }
 
