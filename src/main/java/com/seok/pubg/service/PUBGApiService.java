@@ -102,7 +102,7 @@ public class PUBGApiService {
         }
 
         if (playerRosterId == null) {
-            throw new Exception("Player roster ID not found in match data.");
+            throw new Exception("ID못찾음.");
         }
 
         // 팀원 이름 수집
