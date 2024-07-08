@@ -33,5 +33,12 @@ public class PUBGApiController {
         System.out.println(pubgApiService.getMatchId(platform,player_name));
         return pubgApiService.getMatchId(platform,player_name);
     }
+    @GetMapping("/playerid/{platform}/{player_name}")
+    public String getPlayerId(@PathVariable String platform, @PathVariable String player_name) throws Exception {
+        System.out.println(pubgApiService.getMatchId(platform,player_name));
+        return pubgApiService.getPlayerId(platform,player_name);
+    }
+
+
 
 }

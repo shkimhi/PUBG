@@ -114,6 +114,14 @@ public class PUBGApiService {
         return teamMates;
     }
 
+    public String getPlayerId(String platform, String playerName) throws Exception {
+        String url = String.format("https://api.pubg.com/shards/%s/players?filter[playerNames]=%s", platform, playerName);
+        JSONObject playerData = getJsonResponse(url);
+
+        return playerData.getJSONArray("data").getJSONObject(0)
+                .getString("id");
+    }
+
     private JSONObject getJsonResponse(String urlString) throws Exception {
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
